@@ -6,7 +6,9 @@ public:
         if (n == 1) {
             return nums[0];
         }
-        for (int i = 0; i < n - 1; i += 2) {
+        for (int i = 0; i < n - 1; i += 2) /* i++ is also fine, increment of 2 in the loop is efficient
+            because it effectively skips the duplicate elements and only checks unique pairs.*/
+        {
             if (nums[i] != nums[i + 1]) {
                 return nums[i];
             }
