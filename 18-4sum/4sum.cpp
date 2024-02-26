@@ -4,7 +4,6 @@ public:
         int n = arr.size();
         sort(arr.begin(), arr.end());
         vector<vector<int>> ans;
-
         for (int i = 0; i < n; i++) {
             if (i > 0 && arr[i] == arr[i - 1])
                 continue;
@@ -12,7 +11,6 @@ public:
             for (int j = i + 1; j < n; j++) {
                 if (j != i + 1 && arr[j] == arr[j - 1])
                     continue;
-                    
                 int k = j + 1;
                 int l = n - 1;
 
