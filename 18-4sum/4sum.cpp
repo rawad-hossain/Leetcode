@@ -12,6 +12,7 @@ public:
             for (int j = i + 1; j < n; j++) {
                 if (j != i + 1 && arr[j] == arr[j - 1])
                     continue;
+                    
                 int k = j + 1;
                 int l = n - 1;
 
