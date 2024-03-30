@@ -1,3 +1,7 @@
+https://www.naukri.com/code360/problems/add-one-to-a-number-represented-as-linked-list_920557?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&count=25&search=&sort_entity=order&sort_order=ASC&leftPanelTabValue=PROBLEM
+
+
+
 You're given a positive integer represented in the form of a singly linked-list of digits. The length of the number is 'n'.
 
 
