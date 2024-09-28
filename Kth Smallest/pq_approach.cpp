@@ -1,5 +1,6 @@
-class Solution {
-  public:
+class Solution
+{
+public:
     // arr : given array
     // k : find kth smallest element and return using this function
     int kthSmallest(vector<int> &arr, int k)
