@@ -8,59 +8,70 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution {
+class Solution
+{
 public:
-    ListNode* reverse(ListNode* head) {
+    ListNode *reverseLinkedList(ListNode *head)
+    {
+        ListNode *temp = head;
+        ListNode *prev = NULL;
+        ListNode *front = NULL;
 
-         ListNode* prev = NULL;  
-         ListNode* curr = head;
-
-         while(curr) {
-             ListNode* tmp = curr->next;
-             curr->next = prev;
-             prev = curr; 
-             curr = tmp;
-         } 
-
-         return prev; 
-    }
-
-    ListNode* reverseKGroup(ListNode* head, int k) {
-        
-        if(!head || !head->next || k == 0 || k == 1) return head;
-
-        ListNode* head1 = head;
-        ListNode* tail1 = head;
-
-        ListNode* tmp = head;
-        int len = 0; 
-
-        while(tmp) {
-            len++;
-            tmp = tmp->next;
+        while (temp != NULL)
+        {
+            front = temp->next;
+            temp->next = prev;
+            prev = temp;
+            temp = front;
         }
 
-        if(k > len) return head;
+        return prev;
+    }
 
-        int l = 1;
+    ListNode *getKthNode(ListNode *temp, int k)
+    {
+        k--;
+        while (temp != NULL && k > 0)
+        {
+            k--;
+            temp = temp->next;
+        }
 
-        while(l < k && tail1->next) {
-            tail1 = tail1->next;
-            l++;
-        } 
+        return temp;
+    }
 
-        ListNode* head2 = tail1->next;
-        tail1->next = NULL;
+    ListNode *reverseKGroup(ListNode *head, int k)
+    {
+        ListNode *temp = head;
+        ListNode *prevLast = NULL;
 
-        head2 = reverseKGroup(head2, k); 
+        while (temp != NULL)
+        {
+            ListNode *KthNode = getKthNode(temp, k);
 
-        head1 = reverse(head);
-        tail1 = head1;
+            if (KthNode == NULL)
+            {
+                if (prevLast)
+                    prevLast->next = temp;
+                break;
+            }
 
-        while(tail1->next) tail1 = tail1->next;
+            ListNode *nextNode = KthNode->next;
+            KthNode->next = NULL;
 
-        tail1->next = head2;
+            reverseLinkedList(temp);
 
-        return head1;
+            if (temp == head) // only for the first group
+                head = KthNode;
+
+            else // rest groups connect via  prevLast and Kth node
+            {
+                prevLast->next = KthNode;
+            }
+
+            prevLast = temp;
+            temp->next = nextNode;
+        }
+        return head;
     }
 };

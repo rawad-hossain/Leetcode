@@ -1,6 +1,8 @@
-class Solution {
+class Solution
+{
 public:
-    bool isNStraightHand(vector<int>& hand, int groupSize) {
+    bool isNStraightHand(vector<int> &hand, int groupSize)
+    {
         if (hand.size() % groupSize != 0)
             return false;
 
@@ -37,7 +39,8 @@ public:
         pq = [1, 2, 3, 4, 6, 7, 8]
         */
 
-        while (!pq.empty()) {
+        while (!pq.empty())
+        {
             int top_element = pq.top(); // top = 1
 
             for (int i = top_element; i < top_element + groupSize;
@@ -51,7 +54,8 @@ public:
 
                 freq[i]--;
 
-                if (freq[i] == 0) {
+                if (freq[i] == 0)
+                {
                     if (i != pq.top()) // let i = 2
                         return false;
                     /*
